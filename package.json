@@ -1,7 +1,7 @@
 {
-  "name": "user-list",
+  "name": "workout-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "Workout Application",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,14 +9,23 @@
     "seed": "node seeds/seed.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Kyle Vance, Trevor Jex, Brandon Jex, James Jabar",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.27.2",
     "bcrypt": "^5.0.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-handlebars": "^5.2.0",
     "mysql2": "^2.2.5",
     "sequelize": "^6.3.5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kyle-vance/Project-2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kyle-vance/Project-2/issues"
+  },
+  "homepage": "https://github.com/kyle-vance/Project-2#readme"
 }
