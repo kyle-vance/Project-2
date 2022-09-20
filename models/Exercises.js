@@ -10,4 +10,4 @@ Exercises.init(
 )
 
 
-module.exports = Painting;
+module.exports = Exercises;
