@@ -1,18 +1,34 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
-const helpers = require('./utils/helpers');
+const helpers = require('./utils/helpers.js');
 const sequelize = require('./config/connection');
+const api = require('./utils/api.js');
+
+
+//oauth
+const { auth } = require('express-openid-connect');
+
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
 // // Create the Handlebars.js engine object with custom helper functions
 const hbs = exphbs.create({ helpers });
-
 // // Inform Express.js which template engine we're using
 app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars');
+
+
+app.set('view engine', 'handlebars', 'ejs');
+
+//ejs oauth add
+// app.set('view engine', 'handlebars', 'ejs');
+
+//oauth
+// app.set('views', path.join(__dirname, 'views'));
+
+// oauth?
+// app.use(logger('dev'));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
