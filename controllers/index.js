@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const api = require('../utils/api')
 router.get('/', (req, res) => {
-    api.workout(req.body.muscleGroup)
+    api.workout(req.body.muscleGroup, req.body.name)
         .then(data=>{
             res.json(data.data);
             
@@ -10,7 +10,8 @@ router.get('/', (req, res) => {
             res.status(500).json(error.message)
         })
 }
-)
+);
+
 // const homeRoutes = require('./homeRoutes');
 
 // router.use('/', homeRoutes);
