@@ -11441,6 +11441,25 @@ section.u-image:not(.u-hover-box),
   position: fixed;
   top: 0;
 }
+.header-color {
+  background-color: #5189c8 !important;
+}
+
+.title-text {
+  color: black !important;
+  font-size: 36px !important; 
+  text-align: center;
+  padding-top:  30px;
+}
+
+.title-text-2 {
+  color: black !important;
+  font-size: 36px !important; 
+  text-align: center;
+  padding-top:  70px;
+  height: 200px;
+}
+
 @supports (position: sticky) {
   .u-header.u-sticky {
     position: sticky;
