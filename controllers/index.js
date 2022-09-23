@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const api = require('../utils/api')
-
-const { requiresAuth } = require('express-openid-connect');
+const homeRoutes = require('./homeRoutes');
+// const { requiresAuth } = require('express-openid-connect');
 
 
 //OAuth integration
@@ -77,5 +77,7 @@ router.get('/instructions', (req, res) => {
         })
 }
 )
+
+router.use('/', homeRoutes);
 
 module.exports = router;

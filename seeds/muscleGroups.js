@@ -3,46 +3,46 @@ const { MuscleGroups } = require('../models');
 const muscleGroupsData =
   [
     {
-      name: 'abdominals',
+      name: 'Abdominals',
     },
     {
-      name: 'abductors',
+      name: 'Abductors',
     },
     {
-      name: 'adductors',
+      name: 'Adductors',
     },
     {
-      name: 'biceps',
+      name: 'Biceps',
     },
     {
-      name: 'calves',
+      name: 'Calves',
     },
     {
-      name: 'chest',
+      name: 'Chest',
     },
     {
-      name: 'forearms',
+      name: 'Forearms',
     },
     {
-      name: 'glutes',
+      name: 'Glutes',
     },
     {
-      name: 'hamstrings',
+      name: 'Hamstrings',
     },
     {
-      name: 'lats',
+      name: 'Lats',
     },
     {
-      name: 'neck',
+      name: 'Neck',
     },
     {
-      name: 'quadriceps',
+      name: 'Quadriceps',
     },
     {
-      name: 'traps',
+      name: 'Traps',
     },
     {
-      name: 'triceps',
+      name: 'Triceps',
     },
   ];
 
