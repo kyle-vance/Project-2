@@ -20,7 +20,7 @@ MuscleGroups.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'MuscleGroups',
+    modelName: 'muscleGroups',
   }
 );
 

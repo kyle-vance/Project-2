@@ -1,6 +1,5 @@
 const router = require('express').Router();
 const { MuscleGroups, Exercises } = require('../models');
-
 // GET all muscleData for homepage
 router.get('/', async (req, res) => {
   try {
@@ -12,11 +11,9 @@ router.get('/', async (req, res) => {
         },
       ],
     });
-
-    const muscleData = muscleGroupsData.map((muscleGroups) =>
-      muscleGroups.get({ plain: true })
+    const muscleData = muscleGroupsData.map((muscle) =>
+      muscle.get({ plain: true })
     );
-
     res.render('homepage', {
       muscleData,
     });
@@ -25,7 +22,6 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
-
 // GET one muscle
 router.get('/muscleGroups/:id', async (req, res) => {
   try {
@@ -44,27 +40,29 @@ router.get('/muscleGroups/:id', async (req, res) => {
         },
       ],
     });
-
-    const muscleGroups = muscleGroupsData.get({ plain: true });
-    res.render('muscleGroups', { muscleGroups });
+    const muscle = muscleGroupsData.get({ plain: true });
+    res.render('muscle', { muscle });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
-
 // GET one exercise
 router.get('/exercises/:id', async (req, res) => {
   try {
     const dbExerciseData = await Exercises.findByPk(req.params.id);
-
     const exercise = dbExerciseData.get({ plain: true });
-
-    res.render('exercise', { exercise });
+    res.render('exercises', { exercise });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
-
 module.exports = router;
+
+
+
+
+
+11:51
+homeroutes.js

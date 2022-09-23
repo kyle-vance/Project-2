@@ -4,10 +4,10 @@ const routes = require('./controllers');
 const helpers = require('./utils/helpers.js');
 const sequelize = require('./config/connection');
 const api = require('./utils/api.js');
-
+const path = require('path');
 
 //oauth
-const { auth } = require('express-openid-connect');
+// const { auth } = require('express-openid-connect');
 
 
 const app = express();
@@ -32,7 +32,7 @@ app.set('view engine', 'handlebars', 'ejs');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-// app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
 
