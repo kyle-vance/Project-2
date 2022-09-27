@@ -1,8 +1,20 @@
 const router = require('express').Router();
-const { MuscleGroups, Exercises } = require('../models');
+
+const { MuscleGroups, Exercises, User } = require('../models');
 
 // GET all muscleData for homepage
 router.get('/', async (req, res) => {
+  try {
+      res.render('homepage', {
+        logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get('/musclegroups', async (req, res) => {
   try {
     const muscleGroupsData = await MuscleGroups.findAll({
       include: [
@@ -17,7 +29,8 @@ router.get('/', async (req, res) => {
       muscleGroups.get({ plain: true })
     );
 
-    res.render('homepage', {
+    res.render('muscleGroups', {
+      logged_in: req.session.logged_in,
       muscleData,
     });
   } catch (err) {
@@ -46,7 +59,7 @@ router.get('/muscleGroups/:id', async (req, res) => {
     });
 
     const muscleGroups = muscleGroupsData.get({ plain: true });
-    res.render('muscleGroups', { muscleGroups });
+    res.render('exercise', { muscleGroups,  logged_in: req.session.logged_in});
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -60,11 +73,25 @@ router.get('/exercises/:id', async (req, res) => {
 
     const exercise = dbExerciseData.get({ plain: true });
 
-    res.render('exercise', { exercise });
+    res.render('exercise', { exercise, logged_in: req.session.logged_in });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
 });
+
+
+router.get('/login', (req, res) => {
+  
+  if (req.session.logged_in) {
+    res.redirect('/');
+    return;
+  }
+
+  res.render('login');
+});
+// app.use("/assets", express.static('./assets/'));
+
+
 
 module.exports = router;
