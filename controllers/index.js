@@ -1,6 +1,11 @@
 const router = require('express').Router();
 const api = require('../utils/api')
 const homeRoutes = require('./homeRoutes');
+
+router.use('/', homeRoutes,);
+
+module.exports = router;
+
 // const { requiresAuth } = require('express-openid-connect');
 
 
@@ -22,62 +27,58 @@ const homeRoutes = require('./homeRoutes');
 
 
 
-router.get('/:search', (req, res) => {
-    api.workoutMuscle(req.params.search)
-        .then(data=>{
-            res.render("workoutDetail", {workouts:data.data});
+// router.get('/:search', (req, res) => {
+//     api.workoutMuscle(req.params.search)
+//         .then(data=>{
+//             res.render("workoutDetail", {workouts:data.data});
             
-        }).catch(error=>{
-            console.log(error)
-            res.status(500).json(error.message)
-        })
-}
-)
-router.get('/name', (req, res) => {
-    api.workoutName(req.body.name)
-        .then(data=>{
-            res.json(data.data);
+//         }).catch(error=>{
+//             console.log(error)
+//             res.status(500).json(error.message)
+//         })
+// }
+// )
+// router.get('/name', (req, res) => {
+//     api.workoutName(req.body.name)
+//         .then(data=>{
+//             res.json(data.data);
             
-        }).catch(error=>{
-            console.log(error)
-            res.status(500).json(error.message)
-        })
-}
-)
-router.get('/type', (req, res) => {
-    api.workoutType(req.body.type)
-        .then(data=>{
-            res.json(data.data);
+//         }).catch(error=>{
+//             console.log(error)
+//             res.status(500).json(error.message)
+//         })
+// }
+// )
+// router.get('/type', (req, res) => {
+//     api.workoutType(req.body.type)
+//         .then(data=>{
+//             res.json(data.data);
             
-        }).catch(error=>{
-            console.log(error)
-            res.status(500).json(error.message)
-        })
-}
-)
-router.get('/difficulty', (req, res) => {
-    api.workoutDifficulty(req.body.difficulty)
-        .then(data=>{
-            res.json(data.data);
+//         }).catch(error=>{
+//             console.log(error)
+//             res.status(500).json(error.message)
+//         })
+// }
+// )
+// router.get('/difficulty', (req, res) => {
+//     api.workoutDifficulty(req.body.difficulty)
+//         .then(data=>{
+//             res.json(data.data);
             
-        }).catch(error=>{
-            console.log(error)
-            res.status(500).json(error.message)
-        })
-}
-)
-router.get('/instructions', (req, res) => {
-    api.workoutInstructions(req.body.instructions)
-        .then(data=>{
-            res.json(data.data);
+//         }).catch(error=>{
+//             console.log(error)
+//             res.status(500).json(error.message)
+//         })
+// }
+// )
+// router.get('/instructions', (req, res) => {
+//     api.workoutInstructions(req.body.instructions)
+//         .then(data=>{
+//             res.json(data.data);
             
-        }).catch(error=>{
-            console.log(error)
-            res.status(500).json(error.message)
-        })
-}
-)
-
-router.use('/', homeRoutes);
-
-module.exports = router;
+//         }).catch(error=>{
+//             console.log(error)
+//             res.status(500).json(error.message)
+//         })
+// }
+// )
