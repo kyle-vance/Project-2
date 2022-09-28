@@ -76,3 +76,16 @@ body {
   padding: 20px;
   cursor: pointer;
 }
+
+.navbar-custom {
+  background-color:#5a88c7 !important;
+  border-top: white !important;
+  border-radius: 10px !important;
+  text-align: center !important;
+}
+
+.bg-dark-custom {
+  background-color:#5a88c7 !important;
+  font: 36px;
+  margin-top: 10px;
+}

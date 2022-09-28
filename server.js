@@ -13,7 +13,6 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 const app = express();
 const PORT = process.env.PORT || 3001;
-const trackerAPI = require("./controllers/api/trackerAPIRoutes.js");
 // // Create the Handlebars.js engine object with custom helper functions
 const hbs = exphbs.create({ helpers });
 // // Inform Express.js which template engine we're using
@@ -53,7 +52,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
-app.use("/tracker", trackerAPI);
+
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));

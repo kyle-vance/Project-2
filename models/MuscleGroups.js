@@ -18,6 +18,10 @@ MuscleGroups.init(
     picture: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false,
     }
   },
   {

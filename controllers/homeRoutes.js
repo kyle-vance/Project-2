@@ -6,7 +6,7 @@ const { MuscleGroups, Exercises, User } = require('../models');
 router.get('/', async (req, res) => {
   try {
       res.render('homepage', {
-        logged_in: req.session.logged_in
+        loggedIn: req.session.loggedIn
     });
   } catch (err) {
     console.log(err);
@@ -30,7 +30,7 @@ router.get('/musclegroups', async (req, res) => {
     );
 
     res.render('muscleGroups', {
-      logged_in: req.session.logged_in,
+      loggedIn: req.session.loggedIn,
       muscleData,
     });
   } catch (err) {
@@ -59,7 +59,7 @@ router.get('/muscleGroups/:id', async (req, res) => {
     });
 
     const muscleGroups = muscleGroupsData.get({ plain: true });
-    res.render('exercise', { muscleGroups,  logged_in: req.session.logged_in});
+    res.render('exercise', { muscleGroups,  loggedIn: req.session.loggedIn});
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -73,7 +73,7 @@ router.get('/exercises/:id', async (req, res) => {
 
     const exercise = dbExerciseData.get({ plain: true });
 
-    res.render('exercise', { exercise, logged_in: req.session.logged_in });
+    res.render('exercise', { exercise, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -81,17 +81,35 @@ router.get('/exercises/:id', async (req, res) => {
 });
 
 
+
+// Login route
 router.get('/login', (req, res) => {
-  
-  if (req.session.logged_in) {
+  // If the user is already logged in, redirect to the homepage
+  if (req.session.loggedIn) {
     res.redirect('/');
     return;
   }
-
+  // Otherwise, render the 'login' template
   res.render('login');
 });
 // app.use("/assets", express.static('./assets/'));
 
+router.get('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    // Remove the session variables
+    req.session.destroy(() => {
+      res.render('homepage');
+    });
+  } else {
+    res.render('homepage');
+  }
+});
+
+
 
 
 module.exports = router;
+
+
+
+
