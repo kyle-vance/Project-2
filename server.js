@@ -2,11 +2,13 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const session = require('express-session');
-const helpers = require('./utils/helpers.js');
+const helpers = require('./utils/helpers');
 const sequelize = require('./config/connection');
 const api = require('./utils/api.js');
 const path = require('path');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
+
 //oauth
 // const { auth } = require('express-openid-connect');
 
@@ -18,8 +20,6 @@ const trackerAPI = require("./controllers/api/trackerAPIRoutes.js");
 const hbs = exphbs.create({ helpers });
 // // Inform Express.js which template engine we're using
 app.engine('handlebars', hbs.engine);
-
-
 app.set('view engine', 'handlebars', 'ejs');
 
 //ejs oauth add
