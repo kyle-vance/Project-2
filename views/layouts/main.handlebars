@@ -30,7 +30,11 @@
           <ul class="u-nav u-unstyled u-nav-1">
             <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/" style="color:black !important;" style="padding: 10px 20px;">Home</a>
             </li>
-            <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/login" style="color:black !important;" style="padding: 10px 20px;">Login</a>
+             {{#if loggedIn}}
+             <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/logout" style="color:black !important;" style="padding: 10px 20px;">Logout</a>
+             {{else}}
+             <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/login" style="color:black !important;" style="padding: 10px 20px;">Login</a>
+                {{/if}}
             </li>
             <li class="u-nav-item"><a
                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
@@ -66,6 +70,9 @@
   </footer>
   <script class="u-script" type="text/javascript" src="assets/jquery.js" defer=""></script>
   <script class="u-script" type="text/javascript" src="assets/nicepage.js" defer=""></script>
+  {{#if loggedIn}}
+  <script src="js/logout.js"></script>
+  {{/if}}
 </body>
 
 

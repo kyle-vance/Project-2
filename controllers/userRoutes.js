@@ -27,7 +27,7 @@ router.post('/login', async (req, res) => {
     // Create session variables based on the logged in user
     req.session.save(() => {
       req.session.user_id = userData.id;
-      req.session.logged_in = true;
+      req.session.loggedIn = true;
       
       res.json({ user: userData, message: 'You are now logged in!' });
     });
@@ -38,7 +38,7 @@ router.post('/login', async (req, res) => {
 });
 
 router.post('/logout', (req, res) => {
-  if (req.session.logged_in) {
+  if (req.session.loggedIn) {
     // Remove the session variables
     req.session.destroy(() => {
       res.status(204).end();
@@ -103,7 +103,7 @@ router.get('/', withAuth, async (req, res) => {
     res.render('homepage', {
       users,
       // Pass the logged in flag to the template
-      logged_in: req.session.logged_in,
+      loggedIn: req.session.loggedIn,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -112,7 +112,7 @@ router.get('/', withAuth, async (req, res) => {
 
 router.get('/login', (req, res) => {
   // If a session exists, redirect the request to the homepage
-  if (req.session.logged_in) {
+  if (req.session.loggedIn) {
     res.redirect('/');
     return;
   }
