@@ -1,9 +1,15 @@
-<section class="card" style=""".u-section-1 .u-image-1">
-  <!-- The contents of this card links to the gallery page using the gallery ID -->
-  <a href="/muscleGroups/{{id}}">
-    <!-- The card contains the gallery name as the card header -->
-    <header>{{name}}</header>
-    <!-- The card contains the first painting of the gallery -->
-    <img src="/images/{{picture}}" alt="{{description}}">
-  </a>
-</section>
+<div class="u-blog-post u-container-style u-repeater-item u-white u-repeater-item-1">
+  <div class="u-container-layout u-similar-container u-valign-top u-container-layout-1">
+    <h4 class="u-blog-control u-text u-text-1">
+      <a class="u-post-header-link" href="/muscleGroups/{{id}}"></a>
+      <header>{{name}}</header>
+    </h4>
+    <a class="u-post-header-link" href="/muscleGroups/{{id}}"><img alt=""
+        class="u-blog-control u-expanded-width u-image u-image-default u-image-1" src="/images/{{picture}}"></a>
+    <div class="u-blog-control u-post-content u-text u-text-2 fr-view">{{description}}</div>
+    <a href="../blog/post-5.html"
+      class="u-blog-control u-border-2 u-border-palette-1-base u-btn u-btn-rectangle u-button-style u-none u-btn-1">Exercises</a>
+  </div>
+</div>
+
+

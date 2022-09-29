@@ -2,7 +2,28 @@ const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const User = require('../../models/User');
 
-// Added comments describing the functionality of this `login` route
+// CREATE new user
+router.post('/', async (req, res) => {
+  try {
+    const dbUserData = await User.create({
+      name: "Joe",
+      email: req.body.email,
+      password: req.body.password,
+    });
+
+    // Set up sessions with a 'loggedIn' variable set to `true`
+    req.session.save(() => {
+      req.session.loggedIn = true;
+
+      res.status(200).json(dbUserData);
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+
 router.post('/login', async (req, res) => {
   try {
     // we search the DB for a user with the provided email
@@ -22,10 +43,28 @@ router.post('/login', async (req, res) => {
       res.status(400).json({ message: 'Login failed. Please try again!' });
       return;
     }
-    // if they do match, return success message
-    res.status(200).json({ message: 'You are now logged in!' });
+
+    // Create session variables based on the logged in user
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.loggedIn = true;
+      
+      res.json({ user: userData, message: 'You are now logged in!' });
+    });
+
   } catch (err) {
-    res.status(500).json(err);
+    res.status(400).json(err);
+  }
+});
+
+router.post('/logout', (req, res) => {
+  if (req.session.loggedIn) {
+    // Remove the session variables
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
   }
 });
 

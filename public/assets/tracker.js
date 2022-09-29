@@ -23,7 +23,7 @@ const hide = (elem) => {
 let activeTracker = {};
 
 const getTracker = () =>
-  fetch('/tracker', {
+  fetch('/api/tracker', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -31,7 +31,7 @@ const getTracker = () =>
   });
 
 const saveTracker = (tracker) =>
-  fetch('/tracker', {
+  fetch('/api/tracker', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -40,7 +40,7 @@ const saveTracker = (tracker) =>
   });
 
 const deleteTracker = (id) =>
-  fetch(`/tracker/${id}`, {
+  fetch(`/api/tracker/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
