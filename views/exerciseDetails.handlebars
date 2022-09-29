@@ -16,20 +16,41 @@
 
 
 <div class="jumbotron-fluid container">
-     
+
     <div class="card card-body-custom">
-       
+
         <div class="card-body card-body-custom">
             {{#each data}}
-            
-            <h4 class="card.title">Workout: {{name}}</h4>
+
+            <h4 class="card-title">Workout: {{name}}</h4>
+            <button style="float:right" class="btn btn-secondary fas fa-plus save-tracker"> Add to Tracker</button>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Reps</label>
+                </div>
+                <select class="custom-select" id="inputGroupSelect01">
+                    <option selected>1</option>
+                    <option value="1">2</option>
+                    <option value="2">3</option>
+                    <option value="3">4</option>
+                    <option value="4">5</option>
+                    <option value="5">6</option>
+                    <option value="6">7</option>
+                </select>
+            </div>
+
             <h5 class="card-subtitle mb-2 text-muted">Workout Type: {{type}}</h5>
             <h5 class="card-subtitle mb-2 text-muted">Difficulty: {{difficulty}}</h5>
             <h5 class="card-subtitle mb-2 text-muted">Equipment needed: {{equipment}}</h5>
             <p class="card-text">Instructions: {{instructions}}</p>
-            <a href="https://www.youtube.com/results?search_query={{name}}" target="_blank" class="card-link">View videos of {{name}}</a>
+            <a href="https://www.youtube.com/results?search_query={{name}}" target="_blank" class="card-link">View
+                videos of {{name}}</a>
+            <br>
+            <hr>
+            <br>
             {{/each}}
         </div>
     </div>
 </div>
-<br>
+
+<script src="assets/tracker.js"></script>
