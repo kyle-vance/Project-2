@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const bcrypt = require('bcrypt');
-const User = require('../assets/login');
+const User = require('/models/Users.js');
 
 window.localStorage.getItem("email");
 

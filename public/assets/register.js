@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var Register = require('../assets/register.html');
+var Register = require('/models/user.js');
 
 
 router.post('/', (req, res, next) => {
@@ -30,7 +30,8 @@ router.post('/', (req, res, next) => {
         });
        
         req.flash('success', 'User Added');
-        res.redirect('/Login');
+        res.redirect('assets/Login');
+        next.localStorage.setItem("userData");
     }
 
     
