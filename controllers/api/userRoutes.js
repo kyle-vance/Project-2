@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const bcrypt = require('bcrypt');
+const User = require('../../models/User');
 
 // CREATE new user
 router.post('/', async (req, res) => {
@@ -25,23 +26,21 @@ router.post('/', async (req, res) => {
 
 router.post('/login', async (req, res) => {
   try {
-    // Find the user who matches the posted e-mail address
+    // we search the DB for a user with the provided email
     const userData = await User.findOne({ where: { email: req.body.email } });
-
     if (!userData) {
-      res
-        .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
+      // the error message shouldn't specify if the login failed because of wrong email or password
+      res.status(404).json({ message: 'Login failed. Please try again!' });
       return;
     }
-
-    // Verify the posted password with the password store in the database
-    const validPassword = await userData.checkPassword(req.body.password);
-
+    // use `bcrypt.compare()` to compare the provided password and the hashed password
+    const validPassword = await bcrypt.compare(
+      req.body.password,
+      userData.password
+    );
+    // if they do not match, return error message
     if (!validPassword) {
-      res
-        .status(400)
-        .json({ message: 'Incorrect email or password, please try again' });
+      res.status(400).json({ message: 'Login failed. Please try again!' });
       return;
     }
 
