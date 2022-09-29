@@ -14,6 +14,8 @@ router.get('/', async (req, res) => {
   }
 });
 
+
+
 router.get('/musclegroups', async (req, res) => {
   try {
     const muscleGroupsData = await MuscleGroups.findAll({
@@ -93,6 +95,18 @@ res.render("exerciseDetails" , {
       res.json(err.message)
   }
 });
+
+router.get('/tracker', async (req, res) => {
+  try {
+      res.render('tracker', {
+        loggedIn: req.session.loggedIn
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
 
 
 

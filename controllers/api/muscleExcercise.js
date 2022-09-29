@@ -15,7 +15,7 @@ res.render("exerciseDetails" , {
         console.log(err)
         res.json(err.message)
     }
-})
+});
 
 
 

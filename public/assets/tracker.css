@@ -89,3 +89,8 @@ body {
   font: 36px;
   margin-top: 10px;
 }
+
+.card-body-custom {
+border:#000000 !important;
+border-radius: 2px !important;
+}

@@ -35,10 +35,14 @@
                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/"
                 style="color:black !important;" style="padding: 10px 20px;">Home</a>
             </li>
-              {{#if loggedIn}}
-            <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/logout" style="color:black !important;" style="padding: 10px 20px;">Login</a>
-            {{else}}
-          <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/login" style="color:black !important;" style="padding: 10px 20px;">Login</a>
+            {{#if loggedIn}}
+            <li class="u-nav-item"><a
+                class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+                href="/logout" style="color:black !important;" style="padding: 10px 20px;">Login</a>
+              {{else}}
+            <li class="u-nav-item"><a
+                class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="/login"
+                style="color:black !important;" style="padding: 10px 20px;">Login</a>
               {{/if}}
             </li>
             <li class="u-nav-item"><a
@@ -47,7 +51,7 @@
             </li>
             <li class="u-nav-item"><a
                 class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
-               style="color:black !important;" href="/tracker" style="padding: 10px 20px;">Workout Tracker</a>
+                style="color:black !important;" href="/tracker" style="padding: 10px 20px;">Workout Tracker</a>
             </li>
           </ul>
         </div>
@@ -56,12 +60,7 @@
   </header>
 
   <main>
-    <aside>
-      <h2> Record your workouts!</h2>
-    </aside>
-
     {{{body}}}
-
   </main>
 
 
@@ -73,6 +72,9 @@
   </footer>
   <script class="u-script" type="text/javascript" src="assets/jquery.js" defer=""></script>
   <script class="u-script" type="text/javascript" src="assets/nicepage.js" defer=""></script>
+  {{#if loggedIn}}
+  <script src="js/logout.js"></script>
+  {{/if}}
 </body>
 
 
