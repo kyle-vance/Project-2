@@ -1,5 +1,5 @@
 const router = require('express').Router();
-
+const { workoutName, workoutMuscle } = require('../utils/api');
 const { MuscleGroups, Exercises, User } = require('../models');
 
 // GET all muscleData for homepage
@@ -67,16 +67,30 @@ router.get('/muscleGroups/:id', async (req, res) => {
 });
 
 // GET one exercise
-router.get('/exercises/:id', async (req, res) => {
-  try {
-    const dbExerciseData = await Exercises.findByPk(req.params.id);
+// router.get('/exercises/:id', async (req, res) => {
+//   try {
+//     const dbExerciseData = await Exercises.findByPk(req.params.id);
 
-    const exercise = dbExerciseData.get({ plain: true });
+//     const exercise = dbExerciseData.get({ plain: true });
 
-    res.render('exercise', { exercise, loggedIn: req.session.loggedIn });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
+//     res.render('exercise', { exercise, loggedIn: req.session.loggedIn });
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
+router.get("/exercises/:name" , async (req , res) => {
+  try{
+const {data} = await workoutMuscle (req.params.name)
+console.log(data)
+res.render("exerciseDetails" , {
+  data,
+  loggedIn:req.session.loggedIn
+}) 
+  }
+  catch(err){
+      console.log(err)
+      res.json(err.message)
   }
 });
 
