@@ -6,6 +6,10 @@
 This application will allow the user to track what they are doing each day at the gym. This will enable the user to see tangible results as their rep ranges and weight lifted increases.
 
 ---
+<a href="https://brotherwidower-workout-tracker.herokuapp.com"/>Link to deployed application</a>
+
+<img width="1269" alt="image" src="https://user-images.githubusercontent.com/105682564/193178817-e095ca5f-3353-4338-be4c-e14960dd292c.png">
+
 
 ## Table of Contents
   - [Installation](#installation)
